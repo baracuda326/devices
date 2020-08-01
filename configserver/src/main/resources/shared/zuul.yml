@@ -1,0 +1,32 @@
+server:
+  port: 8090
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    client:
+      serviceUrl:
+        defaultZone: http://localhost:8761/eureka/
+    registerWithEureka: true
+    fetchRegistry: true
+
+zuul:
+  host:
+    socket-timeout-millis: 20000
+    connect-timeout-millis: 20000
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+  routes:
+    producer-alpha:
+      path: /producer-alpha/**
+      serviceId: producer-alpha
+    datasource:
+      path: /datasource/**
+      serviceId: datasource
+      datasource:
+        path: /consumer/**
+        serviceId: consumer
