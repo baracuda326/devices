@@ -12,7 +12,7 @@ import java.util.List;
 @Data
 @Builder
 public class DeviceFullModel {
-    private List<Device> alarm_list;
-    private List<Device> broken_list;
-    private List<Device> live_list;
+    private List<Device> alarmList;
+    private List<Device> brokenList;
+    private List<Device> liveList;
 }

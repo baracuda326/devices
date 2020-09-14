@@ -13,12 +13,12 @@ import java.io.Serializable;
 @Builder
 public class Device implements Serializable {
     private int id;
-    private float wind_speed;
-    private float wave_height;
-    private float water_temperature;
-    private float air_temperature;
+    private float windSpeed;
+    private float waveHeight;
+    private float waterTemperature;
+    private float airTemperature;
     private double pressure;
     private int isAlive;
     private Location location;
-    private String date_time;
+    private String dateTime;
 }

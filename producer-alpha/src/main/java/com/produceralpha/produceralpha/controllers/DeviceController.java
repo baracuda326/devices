@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping
 public class DeviceController {
     private KafkaTemplate<String, Device> kafkaTemplate;
-    private final static String TOPIC = "device";
+    private static final String TOPIC = "device";
 
     @Autowired
     public DeviceController(KafkaTemplate<String, Device> kafkaTemplate) {
@@ -19,7 +19,6 @@ public class DeviceController {
     @PostMapping("kafka/publish")
     public String post(@RequestBody Device post) {
         kafkaTemplate.send(TOPIC, post);
-        System.out.println("Hello from producer " + post);
         return "Hello from producer " + post;
     }
 }

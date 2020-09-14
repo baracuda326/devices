@@ -48,11 +48,11 @@ public class AnalyticsServiceImpl implements AnalyticsService {
             deviceBrokenRepository.save(deviceBrokenEntityBuilder(device));
         }
         if (device.getIsAlive() == ALIVE) {
-            if (device.getAir_temperature() >= AIR_TEMPERATURE_MAX || device.getAir_temperature() <= AIR_TEMPERATURE_MIN
-                    || device.getWater_temperature() >= WATER_TEMPERATURE_MAX || device.getWater_temperature() <= AIR_TEMPERATURE_MIN
+            if (device.getAirTemperature() >= AIR_TEMPERATURE_MAX || device.getAirTemperature() <= AIR_TEMPERATURE_MIN
+                    || device.getWaterTemperature() >= WATER_TEMPERATURE_MAX || device.getWaterTemperature() <= AIR_TEMPERATURE_MIN
                     || device.getPressure() >= PRESSURE_MAX || device.getPressure() <= PRESSURE_MIN
-                    || device.getWind_speed() >= WIND_SPEED_MAX
-                    || device.getWave_height() >= WAVE_HEIGHT_MAX) {
+                    || device.getWindSpeed() >= WIND_SPEED_MAX
+                    || device.getWaveHeight() >= WAVE_HEIGHT_MAX) {
                 deviceAlarmRepository.save(deviceAlarmEntityBuilder(device));
             } else {
                 deviceLiveRepository.save(deviceLiveEntityBuilder(device));
@@ -67,9 +67,9 @@ public class AnalyticsServiceImpl implements AnalyticsService {
         List<Device> listBroken = mapperDeviceBrokenList(deviceBrokenRepository.findAll());
         List<Device> listLive = mapperDeviceLiveList(deviceLiveRepository.findAll());
         return DeviceFullModel.builder()
-                .alarm_list(listAlarm)
-                .broken_list(listBroken)
-                .live_list(listLive)
+                .alarmList(listAlarm)
+                .brokenList(listBroken)
+                .liveList(listLive)
                 .build();
     }
 
@@ -98,12 +98,12 @@ public class AnalyticsServiceImpl implements AnalyticsService {
     private Device mapperDevice(DeviceBrokenEntity device) {
         return Device.builder()
                 .id(device.getId())
-                .wind_speed(device.getWind_speed())
-                .air_temperature(device.getAir_temperature())
-                .water_temperature(device.getWater_temperature())
-                .wave_height(device.getAir_temperature())
+                .windSpeed(device.getWindSpeed())
+                .airTemperature(device.getAirTemperature())
+                .waterTemperature(device.getWaterTemperature())
+                .waveHeight(device.getAirTemperature())
                 .pressure(device.getPressure())
-                .date_time(device.getDate_time())
+                .dateTime(device.getDateTime())
                 .isAlive(device.getIsAlive())
                 .location(device.getLocation())
                 .build();
@@ -113,12 +113,12 @@ public class AnalyticsServiceImpl implements AnalyticsService {
     private Device mapperDevice(DeviceAlarmEntity device) {
         return Device.builder()
                 .id(device.getId())
-                .wind_speed(device.getWind_speed())
-                .air_temperature(device.getAir_temperature())
-                .water_temperature(device.getWater_temperature())
-                .wave_height(device.getAir_temperature())
+                .windSpeed(device.getWindSpeed())
+                .airTemperature(device.getAirTemperature())
+                .waterTemperature(device.getWaterTemperature())
+                .waveHeight(device.getAirTemperature())
                 .pressure(device.getPressure())
-                .date_time(device.getDate_time())
+                .dateTime(device.getDateTime())
                 .isAlive(device.getIsAlive())
                 .location(device.getLocation())
                 .build();
@@ -128,12 +128,12 @@ public class AnalyticsServiceImpl implements AnalyticsService {
     private Device mapperDevice(DeviceLiveEntity device) {
         return Device.builder()
                 .id(device.getId())
-                .wind_speed(device.getWind_speed())
-                .air_temperature(device.getAir_temperature())
-                .water_temperature(device.getWater_temperature())
-                .wave_height(device.getAir_temperature())
+                .windSpeed(device.getWindSpeed())
+                .airTemperature(device.getAirTemperature())
+                .waterTemperature(device.getWaterTemperature())
+                .waveHeight(device.getAirTemperature())
                 .pressure(device.getPressure())
-                .date_time(device.getDate_time())
+                .dateTime(device.getDateTime())
                 .isAlive(device.getIsAlive())
                 .location(device.getLocation())
                 .build();
@@ -143,12 +143,12 @@ public class AnalyticsServiceImpl implements AnalyticsService {
     private DeviceLiveEntity deviceLiveEntityBuilder(Device device) {
         return DeviceLiveEntity.builder()
                 .id(device.getId())
-                .wind_speed(device.getWind_speed())
-                .air_temperature(device.getAir_temperature())
-                .water_temperature(device.getWater_temperature())
-                .wave_height(device.getAir_temperature())
+                .windSpeed(device.getWindSpeed())
+                .airTemperature(device.getAirTemperature())
+                .waterTemperature(device.getWaterTemperature())
+                .waveHeight(device.getAirTemperature())
                 .pressure(device.getPressure())
-                .date_time(device.getDate_time())
+                .dateTime(device.getDateTime())
                 .isAlive(device.getIsAlive())
                 .location(device.getLocation())
                 .build();
@@ -158,12 +158,12 @@ public class AnalyticsServiceImpl implements AnalyticsService {
     private DeviceAlarmEntity deviceAlarmEntityBuilder(Device device) {
         return DeviceAlarmEntity.builder()
                 .id(device.getId())
-                .wind_speed(device.getWind_speed())
-                .air_temperature(device.getAir_temperature())
-                .water_temperature(device.getWater_temperature())
-                .wave_height(device.getAir_temperature())
+                .windSpeed(device.getWindSpeed())
+                .airTemperature(device.getAirTemperature())
+                .waterTemperature(device.getWaterTemperature())
+                .waveHeight(device.getAirTemperature())
                 .pressure(device.getPressure())
-                .date_time(device.getDate_time())
+                .dateTime(device.getDateTime())
                 .isAlive(device.getIsAlive())
                 .location(device.getLocation())
                 .build();
@@ -173,12 +173,12 @@ public class AnalyticsServiceImpl implements AnalyticsService {
     private DeviceBrokenEntity deviceBrokenEntityBuilder(Device device) {
         return DeviceBrokenEntity.builder()
                 .id(device.getId())
-                .wind_speed(device.getWind_speed())
-                .air_temperature(device.getAir_temperature())
-                .water_temperature(device.getWater_temperature())
-                .wave_height(device.getAir_temperature())
+                .windSpeed(device.getWindSpeed())
+                .airTemperature(device.getAirTemperature())
+                .waterTemperature(device.getWaterTemperature())
+                .waveHeight(device.getAirTemperature())
                 .pressure(device.getPressure())
-                .date_time(device.getDate_time())
+                .dateTime(device.getDateTime())
                 .isAlive(device.getIsAlive())
                 .location(device.getLocation())
                 .build();
